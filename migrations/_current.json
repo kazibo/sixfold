@@ -1,0 +1,90 @@
+{
+    "tables": {
+        "Airports": {
+            "tableName": "Airports",
+            "schema": {
+                "code": {
+                    "primaryKey": true,
+                    "field": "code",
+                    "seqType": "Sequelize.STRING(3)"
+                },
+                "latitude": {
+                    "field": "latitude",
+                    "seqType": "Sequelize.FLOAT"
+                },
+                "longitude": {
+                    "field": "longitude",
+                    "seqType": "Sequelize.FLOAT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Flights": {
+            "tableName": "Flights",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "distance": {
+                    "field": "distance",
+                    "seqType": "Sequelize.FLOAT"
+                },
+                "ground": {
+                    "defaultValue": {
+                        "value": false
+                    },
+                    "field": "ground",
+                    "seqType": "Sequelize.BOOLEAN"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "from": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Airports",
+                        "key": "code"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "from",
+                    "seqType": "Sequelize.STRING(3)"
+                },
+                "to": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Airports",
+                        "key": "code"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "field": "to",
+                    "seqType": "Sequelize.STRING(3)"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 1
+}
